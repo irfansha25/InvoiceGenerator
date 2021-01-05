@@ -1,0 +1,95 @@
+﻿<Window x:Class="InvoiceGenerator.GeneralSetting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InvoiceGenerator"
+        xmlns:vm="clr-namespace:ViewModelInvoice;assembly=ViewModelInvoice"
+        mc:Ignorable="d"
+        Title="GeneralSetting" Height="350" Width="300" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+    <Window.Resources>
+        <ControlTemplate x:Key="validationTemplate">
+            <DockPanel>
+                <TextBlock Foreground="Red" FontSize="20" Text="!"/>
+                <Border BorderBrush="Orange" BorderThickness="1">
+                    <AdornedElementPlaceholder/>
+                </Border>
+            </DockPanel>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Content="Printer Name"  Style="{StaticResource appLabelStyle}"/>
+        <ComboBox Grid.Column="1"  Grid.Row="0" TabIndex="0" Name="cmbPrinters" SelectedItem="{Binding Path=PrinterName}" Margin="10,15"/>
+        <Label Grid.Column="0" Grid.Row="1" Content="CGST &lt; 1000"  Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="1" Name="txtCGSTlessthan1000"  TabIndex="1" Width="50" Style="{StaticResource textBoxInError}"  Validation.ErrorTemplate="{StaticResource validationTemplate}">
+            <TextBox.Text>
+                <Binding Path="CGSTLessThan1000"   UpdateSourceTrigger="LostFocus" >
+                    <Binding.ValidationRules>
+                        <vm:PercentageValidationRule FieldName="CGST" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Grid.Column="0" Grid.Row="2" Content="SGST &lt; 1000"  Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="2" Name="txtSGSTlessthan1000"  TabIndex="2" Width="50" Style="{StaticResource textBoxInError}"  Validation.ErrorTemplate="{StaticResource validationTemplate}">
+            <TextBox.Text>
+                <Binding Path="SGSTLessThan1000"   UpdateSourceTrigger="LostFocus" >
+                    <Binding.ValidationRules>
+                        <vm:PercentageValidationRule FieldName="SGST" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Grid.Column="0" Grid.Row="3" Content="CGST &gt;= 1000" Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="3" Name="txtCGSTgreaterthan1000"  TabIndex="3" Width="50" Style="{StaticResource textBoxInError}"  Validation.ErrorTemplate="{StaticResource validationTemplate}">
+            <TextBox.Text>
+                <Binding Path="CGSTGreaterThan1000"   UpdateSourceTrigger="LostFocus" >
+                    <Binding.ValidationRules>
+                        <vm:PercentageValidationRule FieldName="CGST" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Grid.Column="0" Grid.Row="4" Content="SGST &gt;= 1000"  Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="4" Name="txtSGSTgreaterthan1000"  TabIndex="4" Width="50" Style="{StaticResource textBoxInError}"  Validation.ErrorTemplate="{StaticResource validationTemplate}">
+            <TextBox.Text>
+                <Binding Path="SGSTGreaterThan1000"   UpdateSourceTrigger="LostFocus" >
+                    <Binding.ValidationRules>
+                        <vm:PercentageValidationRule FieldName="SGST" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Button Grid.Row="5" Name="btnSave" IsDefault="True" Content="Save" Click="BtnSave_Click" Margin="10,15">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=txtCGSTlessthan1000, Path=(Validation.HasError)}" Value="False"/>
+                                <Condition Binding="{Binding ElementName=txtSGSTlessthan1000, Path=(Validation.HasError)}" Value="False"/>
+                                <Condition Binding="{Binding ElementName=txtCGSTgreaterthan1000, Path=(Validation.HasError)}" Value="False"/>
+                                <Condition Binding="{Binding ElementName=txtSGSTgreaterthan1000, Path=(Validation.HasError)}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="1" Grid.Row="5" Name="btnCancel" IsCancel="True" Content="Cancel" Click="BtnCancel_Click" Margin="10,15"/>
+    </Grid>
+</Window>

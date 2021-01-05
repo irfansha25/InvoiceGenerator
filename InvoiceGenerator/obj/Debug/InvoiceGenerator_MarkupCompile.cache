@@ -1,0 +1,20 @@
+﻿InvoiceGenerator
+
+
+winexe
+C#
+.cs
+G:\Projects\Sharif Enterprises\InvoiceGenerator\InvoiceGenerator\obj\Debug\
+InvoiceGenerator
+none
+false
+DEBUG;TRACE
+G:\Projects\Sharif Enterprises\InvoiceGenerator\InvoiceGenerator\App.xaml
+7-1346792914
+
+12156560893
+15944759391
+AddOrUpdateClient.xaml;ClientMaster.xaml;CreateInvoice.xaml;GeneralSetting.xaml;InvoiceDetails.xaml;Login.xaml;MDI.xaml;
+
+True
+

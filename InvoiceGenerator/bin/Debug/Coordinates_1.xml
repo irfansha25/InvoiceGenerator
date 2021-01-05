@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<coordinates>
+  <Invoice property="ClientName">
+    <X>98</X>
+    <Y>244</Y>
+  </Invoice>
+  <Invoice property="Address">
+    <X>70</X>
+    <Y>270</Y>
+  </Invoice>
+  <Invoice property="GstNo">
+    <X>145</X>
+    <Y>322</Y>
+  </Invoice>
+  <Invoice property="InvoiceNo">
+    <X>620</X>
+    <Y>225</Y>
+  </Invoice>
+  <Invoice property="InvoiceDate">
+    <X>570</X>
+    <Y>264</Y>
+  </Invoice>
+  <Invoice property="ItemName">
+    <X>98</X>
+    <Y>426</Y>
+  </Invoice>
+  <Invoice property="ShadeCode">
+    <X>340</X>
+    <Y>426</Y>
+  </Invoice>
+  <Invoice property="Inch_36">
+    <X>396.7</X>
+    <Y>426</Y>
+  </Invoice>
+  <Invoice property="Inch_38">
+    <X>419.37</X>
+    <Y>426</Y>
+  </Invoice>
+  <Invoice property="Inch_40">
+    <X>442.04</X>
+    <Y>426</Y>
+  </Invoice>
+  <Invoice property="Inch_42">
+    <X>464.71</X>
+    <Y>426</Y>
+  </Invoice>
+  <Invoice property="Inch_44">
+    <X>487.38</X>
+    <Y>426</Y>
+  </Invoice>
+  <Invoice property="Inch_46">
+    <X>510.05</X>
+    <Y>426</Y>
+  </Invoice>
+  <Invoice property="Inch_48">
+    <X>532.72</X>
+    <Y>426</Y>
+  </Invoice>
+  <Invoice property="Inch_50">
+    <X>555.39</X>
+    <Y>426</Y>
+  </Invoice>
+  <Invoice property="Quantity">
+    <X>578.06</X>
+    <Y>426</Y>
+  </Invoice>
+  <Invoice property="Rate">
+    <X>632</X>
+    <Y>426</Y>
+  </Invoice>
+  <Invoice property="Amount">
+    <X>689</X>
+    <Y>426</Y>
+  </Invoice>
+<Invoice property="TotalAmount">
+    <X>689</X>
+    <Y>798</Y>
+  </Invoice>
+<Invoice property="DiscountedAmount">
+    <X>689</X>
+    <Y>820.67</Y>
+  </Invoice>
+<Invoice property="Freight">
+    <X>689</X>
+    <Y>843.34</Y>
+  </Invoice>
+<Invoice property="CGSTAmount">
+    <X>689</X>
+    <Y>866.01</Y>
+  </Invoice>
+<Invoice property="SGSTAmount">
+    <X>689</X>
+    <Y>888.68</Y>
+  </Invoice>
+<Invoice property="IGSTAmount">
+    <X>689</X>
+    <Y>911.35</Y>
+  </Invoice>
+<Invoice property="GrandTotal">
+    <X>689</X>
+    <Y>934.02</Y>
+  </Invoice>
+<Invoice property="GrandTotalInWords">
+    <X>192</X>
+    <Y>934.02</Y>
+  </Invoice>
+<Invoice property="Discount">
+    <X>632</X>
+    <Y>820.67</Y>
+  </Invoice>
+<Invoice property="CGST">
+    <X>632</X>
+    <Y>866.01</Y>
+  </Invoice>
+<Invoice property="SGST">
+    <X>632</X>
+    <Y>888.68</Y>
+  </Invoice>
+<Invoice property="IGST">
+    <X>632</X>
+    <Y>911.35</Y>
+  </Invoice>
+</coordinates>

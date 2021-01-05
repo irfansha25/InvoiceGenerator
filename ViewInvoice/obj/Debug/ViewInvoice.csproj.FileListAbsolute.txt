@@ -1,0 +1,6 @@
+G:\SharifEnterprises\InvoiceGenerator\ViewInvoice\bin\Debug\ViewInvoice.dll
+G:\SharifEnterprises\InvoiceGenerator\ViewInvoice\bin\Debug\ViewInvoice.pdb
+G:\SharifEnterprises\InvoiceGenerator\ViewInvoice\obj\Debug\ViewInvoice.csprojAssemblyReference.cache
+G:\SharifEnterprises\InvoiceGenerator\ViewInvoice\obj\Debug\ViewInvoice.csproj.CoreCompileInputs.cache
+G:\SharifEnterprises\InvoiceGenerator\ViewInvoice\obj\Debug\ViewInvoice.dll
+G:\SharifEnterprises\InvoiceGenerator\ViewInvoice\obj\Debug\ViewInvoice.pdb

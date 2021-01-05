@@ -1,0 +1,150 @@
+﻿<Window x:Class="InvoiceGenerator.AddOrUpdateClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InvoiceGenerator"
+        xmlns:vm="clr-namespace:ViewModelInvoice;assembly=ViewModelInvoice"
+        mc:Ignorable="d"
+        Title="AddOrUpdateClient" Height="400" Width="400" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ControlTemplate x:Key="validationTemplate">
+            <DockPanel>
+                <TextBlock Foreground="Red" FontSize="20" Text="!"/>
+                <Border BorderBrush="Orange" BorderThickness="1">
+                    <AdornedElementPlaceholder/>
+                </Border>
+            </DockPanel>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid FocusManager.FocusedElement="{Binding ElementName=txtClientName}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <!--<RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>-->
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Client Name" Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1" Name="txtClientName" TabIndex="0"  Width="150" Style="{StaticResource textBoxInError}" 
+                 Validation.ErrorTemplate="{StaticResource validationTemplate}">
+            <TextBox.Text>
+                <Binding Path="ClientName"   UpdateSourceTrigger="LostFocus" >
+                    <Binding.ValidationRules>
+                        <vm:ClientNameValidationRule ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Grid.Column="0" Grid.Row="1" Content="Manager Name"  Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="1" Name="txtManagerName"  TabIndex="1" Width="150" Style="{StaticResource appTextStyle}" Text="{Binding Path=ManagerName, UpdateSourceTrigger=LostFocus}" />
+        <Label Grid.Column="0" Grid.Row="2" Content="Address"  Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="2" Name="txtAddress"  TabIndex="2" TextWrapping="Wrap" Width="150" Style="{StaticResource appTextStyle}" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" Text="{Binding Path=Address, UpdateSourceTrigger=LostFocus}" Height="50"/>
+        <Label Grid.Column="0" Grid.Row="3" Content="Contact Number"  Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="3" Name="txtContact" TabIndex="3" Width="150" Style="{StaticResource textBoxInError}" Validation.ErrorTemplate="{StaticResource validationTemplate}">
+            <TextBox.Text>
+                <Binding Path="ContactNumber"   UpdateSourceTrigger="LostFocus" >
+                    <Binding.ValidationRules>
+                        <vm:MobileNumberValidationRule  ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Grid.Column="0" Grid.Row="4" Content="Email Id"  Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="4" Name="txtEmailId"  TabIndex="4" Width="150" Style="{StaticResource textBoxInError}" Validation.ErrorTemplate="{StaticResource validationTemplate}">
+            <TextBox.Text>
+                <Binding Path="EmailId"   UpdateSourceTrigger="LostFocus" >
+                    <Binding.ValidationRules>
+                        <vm:EmailIdValidationRule ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Grid.Column="0" Grid.Row="5" Content="GST No"  Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="5" Name="txtGSTNo"  TabIndex="5" Width="150" Style="{StaticResource textBoxInError}" Validation.ErrorTemplate="{StaticResource validationTemplate}">
+            <TextBox.Text>
+                <Binding Path="GstNo"   UpdateSourceTrigger="LostFocus" >
+                    <Binding.ValidationRules>
+                        <vm:GSTNoValidationRule ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Grid.Column="0" Grid.Row="6" Content="Disc in (%)"  Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="6" Name="txtDiscount"  TabIndex="6" Width="50" Style="{StaticResource textBoxInError}" Validation.ErrorTemplate="{StaticResource validationTemplate}">
+            <TextBox.Text>
+                <Binding Path="Discount"   UpdateSourceTrigger="LostFocus" >
+                    <Binding.ValidationRules>
+                        <vm:PercentageValidationRule FieldName="Discount" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <!--<Label Grid.Column="0" Grid.Row="7" Content="CGST in (%)"  Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="7" Name="txtCGST"  TabIndex="7" Width="50" Style="{StaticResource textBoxInError}"  Validation.ErrorTemplate="{StaticResource validationTemplate}">
+            <TextBox.Text>
+                <Binding Path="CGST"   UpdateSourceTrigger="LostFocus" >
+                    <Binding.ValidationRules>
+                        <vm:PercentageValidationRule FieldName="CGST" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Grid.Column="0" Grid.Row="8" Content="SGST in (%)"  Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="8" Name="txtSGST"  TabIndex="8" Width="50" Style="{StaticResource textBoxInError}"  Validation.ErrorTemplate="{StaticResource validationTemplate}">
+            <TextBox.Text>
+                <Binding Path="SGST"   UpdateSourceTrigger="LostFocus" >
+                    <Binding.ValidationRules>
+                        <vm:PercentageValidationRule FieldName="SGST" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>-->
+        <Label Grid.Column="0" Grid.Row="7" Content="IGST in (%)"  Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="7" Name="txtIGST"  TabIndex="9" Width="50" Style="{StaticResource textBoxInError}"  Validation.ErrorTemplate="{StaticResource validationTemplate}">
+            <TextBox.Text>
+                <Binding Path="IGST"   UpdateSourceTrigger="LostFocus" >
+                    <Binding.ValidationRules>
+                        <vm:PercentageValidationRule FieldName="IGST" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Button Grid.Column="0" Grid.Row="8" Name="btnSave"  TabIndex="10" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Save" IsDefault="True" Click="BtnSave_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                
+                                <Condition Binding="{Binding ElementName=txtClientName, Path=(Validation.HasError)}" Value="False"/>
+                                <Condition Binding="{Binding ElementName=txtContact, Path=(Validation.HasError)}" Value="False"/>
+                                <Condition Binding="{Binding ElementName=txtEmailId, Path=(Validation.HasError)}" Value="False"/>
+                                <Condition Binding="{Binding ElementName=txtGSTNo, Path=(Validation.HasError)}" Value="False"/>
+                                <Condition Binding="{Binding ElementName=txtDiscount, Path=(Validation.HasError)}" Value="False"/>
+                                <!--<Condition Binding="{Binding ElementName=txtCGST, Path=(Validation.HasError)}" Value="False"/>
+                                <Condition Binding="{Binding ElementName=txtSGST, Path=(Validation.HasError)}" Value="False"/>-->
+                                <Condition Binding="{Binding ElementName=txtIGST, Path=(Validation.HasError)}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="1" Grid.Row="8" Name="btnCancel"  TabIndex="11" Content="Cancel" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" IsCancel="True" Click="BtnCancel_Click"/>
+    </Grid>
+
+
+</Window>

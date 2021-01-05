@@ -1,0 +1,29 @@
+﻿<Window x:Class="InvoiceGenerator.MDI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InvoiceGenerator"
+        mc:Ignorable="d"
+        Title="MDI" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Masters">
+                <MenuItem Header="_Client Master" Click="MenuClientMaster_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Transaction Details">
+                <MenuItem Header="_Generate Bill" Click="MenuGenerateBill_Click"/>
+                <MenuItem Header="_Invoice Details" Click="MenuInvoiceDetails_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Setting" Click="MenuSetting_Click"/>
+            <MenuItem Header="Exit" Click="MenuExit_Click"/>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Text="ILex Solutions contact no 9967701551" />
+            </StatusBarItem>
+        </StatusBar>
+        <Image Source="/InvoiceGenerator;component/Images/tshirtImage.jpg" Stretch="UniformToFill"/>
+        
+    </DockPanel>
+</Window>

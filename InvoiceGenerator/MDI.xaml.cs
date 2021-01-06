@@ -51,5 +51,10 @@ namespace InvoiceGenerator
             GeneralSetting generalSetting = new GeneralSetting();
             generalSetting.Show();
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            MenuExit_Click(null, null);
+        }
     }
 }

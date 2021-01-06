@@ -228,14 +228,14 @@ namespace InvoiceGenerator
         {
             invoiceObject.IsValid = true;
             lvClients.ToolTip = string.Empty;
-            if (invoiceObject.Shades.Where(x => !string.IsNullOrEmpty(x.ShadeCode)).Count() > 0)
+            if (invoiceObject.Shades.Where(x => x.Rate>0).Count() > 0)
             {
-                if (invoiceObject.Shades.Where(x => !string.IsNullOrEmpty(x.ShadeCode)).All(x => x.Rate < 1000))
+                if (invoiceObject.Shades.Where(x => x.Rate > 0).All(x => x.Rate < 1000))
                 {
                     invoiceObject.CGST = Common.GeneralSetting.CGSTLessThan1000;
                     invoiceObject.SGST = Common.GeneralSetting.SGSTLessThan1000;
                 }
-                else if (invoiceObject.Shades.Where(x => !string.IsNullOrEmpty(x.ShadeCode)).All(x => x.Rate >= 1000))
+                else if (invoiceObject.Shades.Where(x => x.Rate > 0).All(x => x.Rate >= 1000))
                 {
                     invoiceObject.CGST = Common.GeneralSetting.CGSTGreaterThan1000;
                     invoiceObject.SGST = Common.GeneralSetting.SGSTGreaterThan1000;

@@ -167,7 +167,7 @@
                     <GridViewColumn Header="Rate" Width="80" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Name="txtRate" TabIndex="12" Width="60" Text="{Binding Path=Rate, UpdateSourceTrigger=LostFocus}" TextChanged="TxtRate_TextChanged"/>
+                                <TextBox Name="txtRate" TabIndex="12" Width="60" Text="{Binding Path=Rate, UpdateSourceTrigger=PropertyChanged}" TextChanged="TxtRate_TextChanged"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

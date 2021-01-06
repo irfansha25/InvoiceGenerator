@@ -63,6 +63,8 @@ namespace ViewModelInvoice
                         setting.CGSTGreaterThan1000 = Convert.ToDouble( dr["ValueString"].ToString());
                     else if (dr["KeyString"].ToString() == "SGSTGreaterThan1000")
                         setting.SGSTGreaterThan1000 = Convert.ToDouble(dr["ValueString"].ToString());
+                    else if (dr["KeyString"].ToString() == "StartInvoiceNumber")
+                        setting.StartInvoiceNumber = Convert.ToInt32(dr["ValueString"].ToString());
                 }
             }
             return setting;

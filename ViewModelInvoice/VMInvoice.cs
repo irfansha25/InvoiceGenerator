@@ -73,7 +73,7 @@ namespace ViewModelInvoice
             StringBuilder sbQuery = new StringBuilder();
             sbQuery.Append("Select count(invoiceid) from InvoiceMaster where InvoiceDate Between '" + startDate.ToString("dd-MMM-yyyy") + "' And '" + endDate.ToString("dd-MMM-yyyy") + "'");
             int counter = (int)Common.ExecuteScalar(sbQuery.ToString());
-            return "SE/" + startDate.Year + "-" + endDate.Year + "/" + (counter + 1).ToString();
+            return "SE/" + startDate.Year + "-" + endDate.Year + "/" + (Common.GeneralSetting.StartInvoiceNumber+counter + 1).ToString();
 
         }
         public static string NumberToWords(int number)

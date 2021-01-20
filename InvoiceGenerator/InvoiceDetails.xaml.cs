@@ -81,6 +81,8 @@ namespace InvoiceGenerator
                    tax.SGSTAmount.ToString(), tax.IGSTAmount.ToString(),tax.GrandTotal.ToString()};
                     sb.AppendLine(string.Join(",", fields));
                 }
+                if (!Directory.Exists(Environment.CurrentDirectory.ToString() + "\\Invoices"))
+                    Directory.CreateDirectory(Environment.CurrentDirectory.ToString() + "\\Invoices");
                 File.WriteAllText(Environment.CurrentDirectory.ToString() + "\\Invoices\\InvoiceLog_" + DateTime.Now.ToString("dd_MMM_yyyy_HH_mm_ss") + ".csv", sb.ToString());
                 MessageBox.Show("File is exported successfully", Common.CompanyName);
             }

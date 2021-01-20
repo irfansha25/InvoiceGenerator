@@ -52,6 +52,7 @@
     <Compile Include="ValueConverter\AmountConverter.cs" />
     <Compile Include="ValueConverter\GrandTotalConverter.cs" />
     <Compile Include="ValueConverter\InvoiceNumberToBooleanConverter.cs" />
+    <Compile Include="ValueConverter\ZeroToEmptyConverter.cs" />
     <Compile Include="VMClient.cs" />
     <Compile Include="vmFilterInvoice.cs" />
     <Compile Include="VMInvoice.cs" />

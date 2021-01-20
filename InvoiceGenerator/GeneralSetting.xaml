@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:InvoiceGenerator"
         xmlns:vm="clr-namespace:ViewModelInvoice;assembly=ViewModelInvoice"
         mc:Ignorable="d"
-        Title="GeneralSetting" Height="350" Width="300" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+        Title="GeneralSetting" Height="400" Width="300" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
     <Window.Resources>
         <ControlTemplate x:Key="validationTemplate">
             <DockPanel>
@@ -29,11 +29,16 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label Grid.Column="0" Grid.Row="0" Content="Printer Name"  Style="{StaticResource appLabelStyle}"/>
-        <ComboBox Grid.Column="1"  Grid.Row="0" TabIndex="0" Name="cmbPrinters" SelectedItem="{Binding Path=PrinterName}" Margin="10,15"/>
-        <Label Grid.Column="0" Grid.Row="1" Content="CGST &lt; 1000"  Style="{StaticResource appLabelStyle}"/>
-        <TextBox Grid.Column="1"  Grid.Row="1" Name="txtCGSTlessthan1000"  TabIndex="1" Width="50" Style="{StaticResource textBoxInError}"  Validation.ErrorTemplate="{StaticResource validationTemplate}">
+        <ComboBox Grid.Column="1"  Grid.Row="0" TabIndex="0" Name="cmbPrinters" SelectedItem="{Binding Path=PrinterName}" Margin="5,15,10,15"/>
+        <WrapPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <RadioButton Name="rbtnPrintToBill" FontWeight="Bold" IsChecked="{Binding Path=IsPrintToBill}" Content="Print to Bill"/>
+            <RadioButton Name="rbtnPrintToFile" Content="Print to File" FontWeight="Bold" Margin="15,0,0,0"/>
+        </WrapPanel>
+        <Label Grid.Column="0" Grid.Row="2" Content="CGST &lt; 1000"  Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="2" Name="txtCGSTlessthan1000"  TabIndex="1" Width="50" Style="{StaticResource textBoxInError}"  Validation.ErrorTemplate="{StaticResource validationTemplate}">
             <TextBox.Text>
                 <Binding Path="CGSTLessThan1000"   UpdateSourceTrigger="LostFocus" >
                     <Binding.ValidationRules>
@@ -42,8 +47,8 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <Label Grid.Column="0" Grid.Row="2" Content="SGST &lt; 1000"  Style="{StaticResource appLabelStyle}"/>
-        <TextBox Grid.Column="1"  Grid.Row="2" Name="txtSGSTlessthan1000"  TabIndex="2" Width="50" Style="{StaticResource textBoxInError}"  Validation.ErrorTemplate="{StaticResource validationTemplate}">
+        <Label Grid.Column="0" Grid.Row="3" Content="SGST &lt; 1000"  Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="3" Name="txtSGSTlessthan1000"  TabIndex="2" Width="50" Style="{StaticResource textBoxInError}"  Validation.ErrorTemplate="{StaticResource validationTemplate}">
             <TextBox.Text>
                 <Binding Path="SGSTLessThan1000"   UpdateSourceTrigger="LostFocus" >
                     <Binding.ValidationRules>
@@ -52,8 +57,8 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <Label Grid.Column="0" Grid.Row="3" Content="CGST &gt;= 1000" Style="{StaticResource appLabelStyle}"/>
-        <TextBox Grid.Column="1"  Grid.Row="3" Name="txtCGSTgreaterthan1000"  TabIndex="3" Width="50" Style="{StaticResource textBoxInError}"  Validation.ErrorTemplate="{StaticResource validationTemplate}">
+        <Label Grid.Column="0" Grid.Row="4" Content="CGST &gt;= 1000" Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="4" Name="txtCGSTgreaterthan1000"  TabIndex="3" Width="50" Style="{StaticResource textBoxInError}"  Validation.ErrorTemplate="{StaticResource validationTemplate}">
             <TextBox.Text>
                 <Binding Path="CGSTGreaterThan1000"   UpdateSourceTrigger="LostFocus" >
                     <Binding.ValidationRules>
@@ -62,8 +67,8 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <Label Grid.Column="0" Grid.Row="4" Content="SGST &gt;= 1000"  Style="{StaticResource appLabelStyle}"/>
-        <TextBox Grid.Column="1"  Grid.Row="4" Name="txtSGSTgreaterthan1000"  TabIndex="4" Width="50" Style="{StaticResource textBoxInError}"  Validation.ErrorTemplate="{StaticResource validationTemplate}">
+        <Label Grid.Column="0" Grid.Row="5" Content="SGST &gt;= 1000"  Style="{StaticResource appLabelStyle}"/>
+        <TextBox Grid.Column="1"  Grid.Row="5" Name="txtSGSTgreaterthan1000"  TabIndex="4" Width="50" Style="{StaticResource textBoxInError}"  Validation.ErrorTemplate="{StaticResource validationTemplate}">
             <TextBox.Text>
                 <Binding Path="SGSTGreaterThan1000"   UpdateSourceTrigger="LostFocus" >
                     <Binding.ValidationRules>
@@ -72,7 +77,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <Button Grid.Row="5" Name="btnSave" IsDefault="True" Content="Save" Click="BtnSave_Click" Margin="10,15">
+        <Button Grid.Row="6" Name="btnSave" IsDefault="True" Content="Save" Click="BtnSave_Click" Margin="10,15">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="IsEnabled" Value="False"/>
@@ -90,6 +95,6 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Grid.Column="1" Grid.Row="5" Name="btnCancel" IsCancel="True" Content="Cancel" Click="BtnCancel_Click" Margin="10,15"/>
+        <Button Grid.Column="1" Grid.Row="6" Name="btnCancel" IsCancel="True" Content="Cancel" Click="BtnCancel_Click" Margin="10,15"/>
     </Grid>
 </Window>

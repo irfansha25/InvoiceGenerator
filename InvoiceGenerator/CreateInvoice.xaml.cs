@@ -114,10 +114,25 @@ namespace InvoiceGenerator
                 MessageBox.Show("Kindly configure printer in setting", Common.CompanyName);
                 return;
             }
-            PrintDocument pd = new PrintDocument();//3508 x 2480
-            pd.PrinterSettings.PrinterName = Common.GeneralSetting.PrinterName;
-            pd.PrintPage += Pd_PrintPage;
-            pd.Print();
+            if (Common.GeneralSetting.IsPrintToBill)
+            {
+                PrintDocument pd = new PrintDocument();//3508 x 2480
+                pd.PrinterSettings.PrinterName = Common.GeneralSetting.PrinterName;
+                pd.PrintPage += Pd_PrintPage;
+                pd.Print();
+            }
+            else
+            {
+                PrintDialog printDlg = new PrintDialog();
+                Nullable<Boolean> print = printDlg.ShowDialog();
+                if (print == true)
+                {
+                    PrintBill objPrintbill = new PrintBill(invoiceObject);
+                    objPrintbill.Show();
+                    printDlg.PrintVisual(objPrintbill, "Window Printing");
+                    objPrintbill.Close();
+                }
+            }
             MessageBox.Show("Printed successfully", Common.CompanyName);
         }
 

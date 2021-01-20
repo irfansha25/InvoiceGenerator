@@ -13,12 +13,13 @@ namespace ViewModelInvoice
         public void SaveSetting(Setting setting)
         {
             StringBuilder sbQuery = new StringBuilder();
-            sbQuery.Append("Delete from Setting where UserId=" + Common.UserId + " And KeyString in ('PrintertName','CGSTLessThan1000','SGSTLessThan1000','CGSTGreaterThan1000','SGSTGreaterThan1000');");
+            sbQuery.Append("Delete from Setting where UserId=" + Common.UserId + " And KeyString in ('PrintertName','CGSTLessThan1000','SGSTLessThan1000','CGSTGreaterThan1000','SGSTGreaterThan1000','IsPrintToBill');");
             sbQuery.Append("Insert into Setting(KeyString,ValueString,UserId) Values('PrintertName','" + setting.PrinterName + "'," + Common.UserId + ");");
             sbQuery.Append("Insert into Setting(KeyString,ValueString,UserId) Values('CGSTLessThan1000','" + setting.CGSTLessThan1000 + "'," + Common.UserId + ");");
             sbQuery.Append("Insert into Setting(KeyString,ValueString,UserId) Values('SGSTLessThan1000','" + setting.SGSTLessThan1000 + "'," + Common.UserId + ");");
             sbQuery.Append("Insert into Setting(KeyString,ValueString,UserId) Values('CGSTGreaterThan1000','" + setting.CGSTGreaterThan1000 + "'," + Common.UserId + ");");
             sbQuery.Append("Insert into Setting(KeyString,ValueString,UserId) Values('SGSTGreaterThan1000','" + setting.SGSTGreaterThan1000 + "'," + Common.UserId + ");");
+            sbQuery.Append("Insert into Setting(KeyString,ValueString,UserId) Values('IsPrintToBill','" + setting.IsPrintToBill + "'," + Common.UserId + ");");
             Common.ExecuteNonQuery(sbQuery.ToString());
         }
         public void LoadCoordinates()
@@ -65,6 +66,8 @@ namespace ViewModelInvoice
                         setting.SGSTGreaterThan1000 = Convert.ToDouble(dr["ValueString"].ToString());
                     else if (dr["KeyString"].ToString() == "StartInvoiceNumber")
                         setting.StartInvoiceNumber = Convert.ToInt32(dr["ValueString"].ToString());
+                    else if (dr["KeyString"].ToString() == "IsPrintToBill")
+                        setting.IsPrintToBill = Convert.ToBoolean(dr["ValueString"].ToString());
                 }
             }
             return setting;
